@@ -1,10 +1,23 @@
+/*
+Name: Roberto Guallichico
+Current Date: 02/27/2026
+Sources Consulted: I consulted arrays and loops with videos in Youtube (Brocode/CodingwithJohn) until I was able to do it,
+DO-switch was more difficult than I thought, I am bad at doing loops but I got help from friends. I use code from the blackboard re adapted and
+then use it here, just like I do in lab.
+
+By submitting this work, I attest that it is my original work and that I did
+not violate the University of Mississippi academic policies set forth in the
+M book.
+*/
+
 package org.example;
 
-
+import java.util.Scanner;
 
 public class P1Driver {
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
 
         Consultans MyComp = new Consultans("Ciel Consulting");
 
@@ -21,34 +34,44 @@ public class P1Driver {
         MyComp.addPersonnelData(new PersonnelData("Mrs. Brenna Bergnaum", "Applications Developer", 1994));
         MyComp.addPersonnelData(new PersonnelData("Hunter Beier DVM", "Marketing Orchestrator", 1978));
 
-        PersonnelData[] list = MyComp.getPersonnelList();
-        for (int i = 0; i < MyComp.getCount(); i++) {
-        PersonnelData nowperson = list[i];
-        int age = 2026 - nowperson.getBirth();
-        System.out.println(nowperson.getName() + " is: " + age + " years old.");
 
 
+        //THIS CREATES A LITTLE MENU SO YOU CAN CHOOSE 1 TO SEE THE DATA 2 TO EXIT
+
+        System.out.println("Welcome to CIEL LLC");
+        int ask;
 
 
+        do {
+            System.out.println("Press 1 to see the data");
+            System.out.println("Press 2 to exit");
+            ask = scanner.nextInt();
 
-        }
-        System.out.println("Average age in Ciel : "+ MyComp.getAverage());
-        System.out.println("Youngest in the business : "+MyComp.getYoungest().getName() + " with "+(2026-MyComp.getYoungest().getBirth())+" years old");
-        System.out.println("Oldest in the business : "+MyComp.getOldest().getName()+ " with "+(2026-MyComp.getOldest().getBirth())+" years old");
+            switch (ask) {
+                case 1:
+                    PersonnelData[] list = MyComp.getPersonnelList();
+                    for (int i = 0; i < MyComp.getCount(); i++) {
+                        PersonnelData nowperson = list[i];
+                        // also here I didnt know I need to do this (int age = Consultans.year_2026) top iniciate the final value. I thought I can just use Consultans.year_2026
+                        int age = Consultans.year_2026 - nowperson.getBirth();
+                        System.out.println(nowperson.getName() + " is: " + age + " years old      " + "POSITION: " + nowperson.getJobtitle());
+                    }
+                    System.out.printf("Average age in Ciel : %.2f%n ", MyComp.getAverage());
 
+                    // I already calculate the YOung and old so i just call here
+                    PersonnelData youngest = MyComp.getYoungest();
+                    PersonnelData oldest = MyComp.getOldest();
+                    System.out.println("Youngest in the business : " + youngest.getName() + " with " + (Consultans.year_2026 - youngest.getBirth()) + " years old");
+                    System.out.println("Oldest in the business : " + oldest.getName() + " with " + (Consultans.year_2026 - oldest.getBirth()) + " years old");
+                    break;
+
+                case 2:
+                    System.out.println("Bye Bye");
+                    break;
+
+                default:
+                    System.out.println("Invalid option");
+            }
+        } while (ask != 2);
     }
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
+}

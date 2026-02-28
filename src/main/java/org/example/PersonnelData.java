@@ -7,6 +7,8 @@ public class PersonnelData {
     private String jobtitle;
     private int birth;
 
+    //this creates a public class with the personal data, 3 privates attributes with a constructor and setters and getters
+
 
     public PersonnelData(String name, String jobtitle, int birth) {
         this.name = name;
@@ -14,7 +16,7 @@ public class PersonnelData {
         this.birth = birth;
     }
 
-    // 3. Getter and Setter Methods
+
     public String getName() {
         return name;
     }

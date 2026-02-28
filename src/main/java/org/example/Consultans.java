@@ -19,11 +19,14 @@ public class Consultans {
     public void addPersonnelData(PersonnelData data) {
         this.personnelList[count] = data;
         count++;
+        // add data to the array
 
 
     }
 
     public double getAverage() {
+
+        // calculates the average sum and the div
         double Total = 0;
 
         for (int i = 0; i < count; i++) {
@@ -36,8 +39,10 @@ public class Consultans {
     }
 
     public PersonnelData getOldest() {
-        PersonnelData old = personnelList[0];
 
+        //so I am not good at loops, but this loop find a way to find the one that born the earliest, and then you get the oldest
+
+        PersonnelData old = personnelList[0];
         for (int i = 0; i < count; i++) {
             if (personnelList[i].getBirth() < old.getBirth()) {
                 old = personnelList[i];
@@ -50,6 +55,7 @@ public class Consultans {
 
     }
     public PersonnelData getYoungest() {
+        // this loop find a way to find the one that born the last, and then you get the youngest
         PersonnelData young = personnelList[0];
 
         for (int i = 0; i < count; i++) {
@@ -62,6 +68,8 @@ public class Consultans {
         return young;
 
         }
+
+        //getters so this is accesiable
 
         public String getCiel(){return Ciel;}
     public int getCount(){return count;}
